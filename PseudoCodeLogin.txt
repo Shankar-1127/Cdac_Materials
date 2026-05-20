@@ -1,0 +1,67 @@
+BEGIN
+
+DISPLAY "Welcome to Authentication System"
+DISPLAY "1. Signup"
+DISPLAY "2. Login"
+DISPLAY "3. Admin: View Users & Histories"
+DISPLAY "4. Exit"
+
+READ choice
+
+IF choice == 1 THEN
+    PROMPT "Enter full name, email, phone, password"
+    READ details
+    PROMPT "Confirm password"
+    IF password == confirm_password THEN
+        counter ← loadCounter()
+        username ← "VL_User" + counter
+        save user details in Users.dat
+        saveCounter(counter + 1)
+        DISPLAY "User registered successfully with username"
+    ELSE
+        DISPLAY "Password mismatch"
+    ENDIF
+ENDIF
+
+IF choice == 2 THEN
+    PROMPT "Enter username and password"
+    READ username, password
+    SEARCH Users.dat for username
+    IF found THEN
+        IF password matches THEN
+            DISPLAY user details
+            saveLoginHistory(username, "Login Success")
+            PROMPT "Press 1 to Logout"
+            IF input == 1 THEN
+                saveLoginHistory(username, "Logout")
+                DISPLAY "Logged out successfully"
+            ENDIF
+        ELSE
+            DISPLAY "Invalid password"
+            saveLoginHistory(username, "Login Failed")
+        ENDIF
+    ELSE
+        DISPLAY "User not registered"
+        saveLoginHistory(username, "Login Failed")
+    ENDIF
+ENDIF
+
+IF choice == 3 THEN
+    PROMPT "Enter Admin Password"
+    READ adminPwd
+    IF adminPwd == ADMIN_PASSWORD THEN
+        DISPLAY all users from Users.dat
+        PROMPT "Enter username to view history"
+        READ uname
+        DISPLAY login/logout history of uname from LoginHistory.dat
+    ELSE
+        DISPLAY "Access Denied"
+    ENDIF
+ENDIF
+
+IF choice == 4 THEN
+    DISPLAY "Exited SuccesFully :)"
+    EXIT
+ENDIF
+
+END

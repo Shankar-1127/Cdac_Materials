@@ -1,0 +1,20 @@
+﻿Step No.,Process / Action,Input,Output,Decision / Condition
+1,Start Program,—,Program initialized,—
+2,Display Main Menu,—,Menu options shown,User selects option
+3,Signup selected,"User details (name, email, phone, password)",User record created,Passwords match?
+4,Generate Username,Counter value,Username VL_UserX,—
+5,Save User Data,User struct,Data stored in Users.dat,—
+6,Increment Counter,Counter file,Updated counter,—
+7,Login selected,"Username, password",Login attempt,User exists?
+8,Validate Credentials,"Username, password",Success or failure,Password correct?
+9,Display User Info,User struct,User details shown,—
+10,Record Login Success,Username,Entry in LoginHistory.dat,—
+11,Logout Option,User choice,Logout recorded,Logout chosen?
+12,Record Logout,Username,Entry in LoginHistory.dat,—
+13,Invalid Password,Username,“Login Failed” recorded,Password incorrect
+14,User Not Found,Username,“Login Failed” recorded,User missing
+15,Admin Panel selected,Admin password,Access granted or denied,Password correct?
+16,View All Users,—,List of usernames,—
+17,Select User,Username,Display login/logout history,—
+18,Exit selected,—,Program terminated,—
+19,End,—,Program ends,—
